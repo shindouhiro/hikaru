@@ -32,6 +32,8 @@ import JenkinsGuide from './components/JenkinsGuide.vue'
 import Web3LearningPlan from '../../components/Web3LearningPlan.vue'
 import StoreProjectCard from '../../components/StoreProjectCard.vue'
 import GeminiPage from './components/GeminiPage.vue'
+import CancerGuidePage from './components/CancerGuidePage.vue'
+import DemosShowcase from './components/DemosShowcase.vue'
 
 const theme: Theme = {
   extends: DefaultTheme,
@@ -65,6 +67,8 @@ const theme: Theme = {
     app.component('Web3LearningPlan', Web3LearningPlan)
     app.component('StoreProjectCard', StoreProjectCard)
     app.component('GeminiPage', GeminiPage)
+    app.component('CancerGuidePage', CancerGuidePage)
+    app.component('DemosShowcase', DemosShowcase)
   }
 }
 

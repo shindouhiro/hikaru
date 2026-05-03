@@ -112,6 +112,7 @@ export default defineConfig({
               { text: 'Claude CLI 使用技巧', link: '/ai/claude-cli' },
               { text: 'Codex Cli接入指南', link: '/ai/codex-cli' },
               { text: 'Crush终端连接LLM', link: '/ai/crush' },
+              { text: '癌症发展与预防指南', link: '/ai/cancer-guide' },
             ]
           },
           {
@@ -135,7 +136,8 @@ export default defineConfig({
           {
             text: 'Web网站',
             items: [
-              { text: '🌐 网站展示', link: '/projects/web-sites' }
+              { text: '🌐 网站展示', link: '/projects/web-sites' },
+              { text: '✨ Demos', link: '/projects/demos' }
             ]
           },
           { text: 'nbagent.ai 前端技术栈介绍', link: '/nbagent-frontend-stack' },
