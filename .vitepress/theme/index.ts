@@ -29,11 +29,10 @@ import ThirteenInvitations from '../../frontend/components/ThirteenInvitations.v
 import MiniVueProgress from '../../components/MiniVueProgress.vue'
 import WebSitesShowcase from './components/WebSitesShowcase.vue'
 import JenkinsGuide from './components/JenkinsGuide.vue'
-import Web3LearningPlan from '../../components/Web3LearningPlan.vue'
-import StoreProjectCard from '../../components/StoreProjectCard.vue'
 import GeminiPage from './components/GeminiPage.vue'
 import CancerGuidePage from './components/CancerGuidePage.vue'
 import DemosShowcase from './components/DemosShowcase.vue'
+import TimelinePage from './components/TimelinePage.vue'
 
 const theme: Theme = {
   extends: DefaultTheme,
@@ -64,11 +63,10 @@ const theme: Theme = {
     app.component('MiniVueProgress', MiniVueProgress)
     app.component('WebSitesShowcase', WebSitesShowcase)
     app.component('JenkinsGuide', JenkinsGuide)
-    app.component('Web3LearningPlan', Web3LearningPlan)
-    app.component('StoreProjectCard', StoreProjectCard)
     app.component('GeminiPage', GeminiPage)
     app.component('CancerGuidePage', CancerGuidePage)
     app.component('DemosShowcase', DemosShowcase)
+    app.component('TimelinePage', TimelinePage)
   }
 }
 

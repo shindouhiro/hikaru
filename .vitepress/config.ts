@@ -12,7 +12,7 @@ interface NavItem {
 }
 
 export default defineConfig({
-  base: '/HikaruWebSite/',
+  base: '',
   lang: 'zh-CN',
   appearance: 'dark',
   title: "Hikaru",
@@ -25,6 +25,7 @@ export default defineConfig({
     // 评论配置在 `.vitepress/giscus.ts` 中维护
     nav: [
       { text: '首页', link: '/' },
+      { text: '日志', link: '/changelog' },
       {
         text: 'Nas',
         items: [
@@ -115,15 +116,7 @@ export default defineConfig({
               { text: 'Crush终端连接LLM', link: '/ai/crush' },
               { text: '癌症发展与预防指南', link: '/ai/cancer-guide' },
             ]
-          },
-          {
-            text: 'Web3',
-            items: [
-              { text: 'Web3 学习计划', link: '/web3-learning-plan' },
-              { text: 'Store 项目', link: '/store-project' }
-            ]
-          }
-        ]
+          },]
       },
       {
         text: '项目',

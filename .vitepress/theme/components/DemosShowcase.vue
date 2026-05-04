@@ -25,7 +25,7 @@
             <a :href="demo.link || demo.github || '#'" target="_blank" class="block cursor-pointer relative z-10 w-full bg-white dark:bg-[#111]">
               <template v-if="demo.media.type === 'video'">
                 <video 
-                  :src="demo.media.url" 
+                  :src="withBase(demo.media.url)" 
                   autoplay 
                   loop 
                   muted 
@@ -35,7 +35,7 @@
               </template>
               <template v-else>
                 <img 
-                  :src="demo.media.url" 
+                  :src="withBase(demo.media.url)" 
                   :alt="demo.project || 'Demo'" 
                   class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
@@ -71,6 +71,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { withBase } from 'vitepress'
 
 interface DemoItem {
   id: string
