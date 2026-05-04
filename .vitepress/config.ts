@@ -12,7 +12,7 @@ interface NavItem {
 }
 
 export default defineConfig({
-  base: '/HikaruWebSite/',
+  base: '',
   lang: 'zh-CN',
   appearance: 'dark',
   title: "Hikaru",
