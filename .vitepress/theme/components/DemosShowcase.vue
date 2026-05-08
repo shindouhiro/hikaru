@@ -87,6 +87,17 @@ interface DemoItem {
 
 const demos = ref<DemoItem[]>([
   {
+    id: 'svg-tools',
+    project: 'svg-tools',
+    content: '🎨 <b>svg-tools</b> 是一个实用的 SVG 处理与转换工具集。<br/>帮助开发者快速清理、压缩和管理项目中的 SVG 图标资源，大幅提升前端开发效率。',
+    date: '2026-05-08',
+    github: 'https://github.com/shindouhiro/svg-tools',
+    media: {
+      type: 'image',
+      url: '/images/demos/svg_tools_cover.png'
+    }
+  },
+  {
     id: 'bilibili-crawler',
     project: 'bilibili-crawler',
     content: '📺 <b>bilibili-crawler</b> 是一个强大的 Bilibili 数据抓取工具。<br/>提供高效的视频数据、弹幕及评论提取能力，支持自定义配置与内容分析。',
