@@ -12,7 +12,7 @@ interface NavItem {
 }
 
 export default defineConfig({
-  base: '',
+  base: process.env.GITHUB_ACTIONS ? '/HikaruWebSite/' : '/',
   lang: 'zh-CN',
   appearance: 'dark',
   title: "Hikaru",
