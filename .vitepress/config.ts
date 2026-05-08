@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import UnoCSS from 'unocss/vite'
 import { presetUno, presetIcons } from 'unocss'
 import type { DefaultTheme } from 'vitepress'
-import { link } from 'fs'
+
 
 // 定义导航菜单项的类型
 interface NavItem {

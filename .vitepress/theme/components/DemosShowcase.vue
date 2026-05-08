@@ -51,7 +51,7 @@
           <div class="h-px bg-gray-100 dark:bg-gray-800/80 my-5"></div>
           
           <!-- Actions & Meta -->
-          <div class="flex flex-wrap items-center justify-between gap-y-2 gap-x-4 mt-auto">
+          <div class="flex flex-wrap items-center justify-between gap-y-3 gap-x-4 mt-auto">
             <div class="flex flex-wrap items-center gap-4">
               <a v-if="demo.link" :href="demo.link" target="_blank" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center gap-1.5 uppercase tracking-wide">
                 <span class="i-carbon-launch text-lg"></span> VISIT
@@ -60,7 +60,12 @@
                 <span class="i-carbon-logo-github text-lg"></span> SOURCE
               </a>
             </div>
-            <span class="text-xs text-gray-400 dark:text-gray-500 font-mono shrink-0">{{ demo.date }}</span>
+            <div class="flex flex-wrap gap-2 shrink-0">
+              <span v-for="tag in demo.tags" :key="tag.name" class="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-gray-700 bg-white dark:text-gray-300 dark:bg-[#252525] rounded-md border border-gray-200 dark:border-gray-700/80 shadow-sm transition-colors hover:bg-gray-50 dark:hover:bg-[#2a2a2a]">
+                <span :class="tag.icon" class="text-[13px] shrink-0"></span>
+                {{ tag.name }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -72,10 +77,15 @@
 import { ref } from 'vue'
 import { withBase } from 'vitepress'
 
+interface TechTag {
+  name: string
+  icon: string
+}
+
 interface DemoItem {
   id: string
   content: string
-  date: string
+  tags?: TechTag[]
   link?: string
   github?: string
   project?: string
@@ -90,7 +100,12 @@ const demos = ref<DemoItem[]>([
     id: 'svg-tools',
     project: 'svg-tools',
     content: '🎨 <b>svg-tools</b> 是一个实用的 SVG 处理与转换工具集。<br/>帮助开发者快速清理、压缩和管理项目中的 SVG 图标资源，大幅提升前端开发效率。',
-    date: '2026-05-08',
+    tags: [
+      { name: 'React', icon: 'i-logos-react' },
+      { name: 'Next.js', icon: 'i-logos-nextjs-icon' },
+      { name: 'TailwindCSS', icon: 'i-logos-tailwindcss-icon' },
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' }
+    ],
     github: 'https://github.com/shindouhiro/svg-tools',
     media: {
       type: 'image',
@@ -101,7 +116,13 @@ const demos = ref<DemoItem[]>([
     id: 'bilibili-crawler',
     project: 'bilibili-crawler',
     content: '📺 <b>bilibili-crawler</b> 是一个强大的 Bilibili 数据抓取工具。<br/>提供高效的视频数据、弹幕及评论提取能力，支持自定义配置与内容分析。',
-    date: '2026-05-08',
+    tags: [
+      { name: 'React', icon: 'i-logos-react' },
+      { name: 'Tauri', icon: 'i-logos-tauri' },
+      { name: 'Python', icon: 'i-logos-python' },
+      { name: 'FastAPI', icon: 'i-logos-fastapi-icon' },
+      { name: 'TailwindCSS', icon: 'i-logos-tailwindcss-icon' }
+    ],
     github: 'https://github.com/shindouhiro/bilibili-crawler',
     media: {
       type: 'image',
@@ -112,7 +133,11 @@ const demos = ref<DemoItem[]>([
     id: 'skills-cli',
     project: 'skills-cli',
     content: '🚀 <b>Skills CLI</b> 是一款专为 30+ 种 AI 编码助手量身定制的技能管理工具。<br/>它可以让你在不同的 AI 助手（如 Cursor、Claude Code、Antigravity 等）之间一键搜索、下载并同步安装指令集。',
-    date: '2026-05-03',
+    tags: [
+      { name: 'Vue', icon: 'i-logos-vue' },
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' },
+      { name: 'TailwindCSS', icon: 'i-logos-tailwindcss-icon' }
+    ],
     github: 'https://github.com/shindouhiro/skills-cli',
     media: {
       type: 'image',
@@ -123,7 +148,10 @@ const demos = ref<DemoItem[]>([
     id: 'rules-cli',
     project: 'rules-cli',
     content: '🛡️ <b>Rules CLI</b> 是一个为多种 AI 编码助手设计的规则管理工具。<br/>把统一套 Rules 指令集存放在本地，并一键同步到各大助手，支持从 <b>cursor.directory</b> 直接搜索与下载。',
-    date: '2026-04-20',
+    tags: [
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' },
+      { name: 'tsdown', icon: 'i-carbon-build-tool' }
+    ],
     github: 'https://github.com/shindouhiro/rules-cli',
     media: {
       type: 'image',
@@ -134,7 +162,10 @@ const demos = ref<DemoItem[]>([
     id: 'config-cli',
     project: 'config-cli',
     content: '⚙️ <b>config-cli</b> 是一个用于管理本机 <code>~/.config</code> 配置的命令行工具。<br/>交互式扫描和选择需要管理的配置，快速备份并一键同步到你的 GitHub 仓库。',
-    date: '2026-04-15',
+    tags: [
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' },
+      { name: 'Zod', icon: 'i-logos-zod' }
+    ],
     github: 'https://github.com/shindouhiro/config-cli',
     media: {
       type: 'image',
@@ -145,7 +176,13 @@ const demos = ref<DemoItem[]>([
     id: 'gtd',
     project: 'GTD (Calendar To-Do)',
     content: '🗓️ <b>GTD</b> 是一个现代化的全栈待办事项管理系统，采用 Monorepo 架构。<br/>集成了交互式日历、农历节气支持与高效的任务列表，更有数据看板助你把控工作效率。',
-    date: '2026-05-01',
+    tags: [
+      { name: 'React', icon: 'i-logos-react' },
+      { name: 'Tauri', icon: 'i-logos-tauri' },
+      { name: 'Express', icon: 'i-carbon-api' },
+      { name: 'SQLite', icon: 'i-vscode-icons-file-type-sqlite' },
+      { name: 'TailwindCSS', icon: 'i-logos-tailwindcss-icon' }
+    ],
     github: 'https://github.com/shindouhiro/GTD',
     media: {
       type: 'image',
@@ -156,7 +193,10 @@ const demos = ref<DemoItem[]>([
     id: 'vscode-cli',
     project: 'vscode-cli',
     content: '💻 <b>vscode-cli</b> 是一个用于跨设备同步 VS Code 设置的命令行工具。<br/>一键拉取你的云端 <code>settings.json</code> 及 Snippets，并能自动备份原有配置。',
-    date: '2026-04-30',
+    tags: [
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' },
+      { name: 'tsdown', icon: 'i-carbon-build-tool' }
+    ],
     github: 'https://github.com/shindouhiro/vscode-cli',
     media: {
       type: 'image',
