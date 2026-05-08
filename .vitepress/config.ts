@@ -12,7 +12,8 @@ interface NavItem {
 }
 
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? '/hikaru/' : '/',
+  // 如果是部署到 GitHub Pages，请在 GitHub Actions 中设置环境变量 IS_GH_PAGES=true
+  base: process.env.IS_GH_PAGES ? '/hikaru/' : '/',
   lang: 'zh-CN',
   appearance: 'dark',
   title: "Hikaru",
