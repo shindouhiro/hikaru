@@ -11,9 +11,11 @@ interface NavItem {
   items?: (NavItem | { text: string; items: NavItem[] })[]
 }
 
+const base = process.env.IS_GH_PAGES === 'true' ? '/hikaru/' : '/'
+console.log('--- VitePress Build Base:', base)
+
 export default defineConfig({
-  // 如果是部署到 GitHub Pages，请在 GitHub Actions 中设置环境变量 IS_GH_PAGES=true
-  base: process.env.IS_GH_PAGES ? '/hikaru/' : '/',
+  base,
   lang: 'zh-CN',
   appearance: 'dark',
   title: "Hikaru",
