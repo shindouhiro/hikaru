@@ -1,5 +1,5 @@
 <template>
-  <div class="demos-container max-w-5xl mx-auto px-6 py-12">
+  <div class="demos-container w-full px-4 md:px-8 lg:px-12 py-8 md:py-12">
     <!-- Header -->
     <div class="mb-16">
       <h1 class="text-4xl font-bold tracking-tight mb-4 text-gray-900 dark:text-gray-100 fade-in-up">
@@ -204,8 +204,28 @@ const renderContent = (text: string) => {
 
 .demo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 4rem 2.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2.5rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .demo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .demo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .demo-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem 2.5rem;
+  }
 }
 
 .demo-card {
