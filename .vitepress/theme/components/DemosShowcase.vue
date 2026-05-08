@@ -15,50 +15,49 @@
       <div 
         v-for="(demo, index) in demos" 
         :key="demo.id"
-        class="demo-card group flex flex-col gap-4 relative fade-in-up"
+        class="demo-card group flex flex-col relative bg-white dark:bg-[#1e1e1e] rounded-2xl shadow-md dark:shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200 dark:border-gray-700/80 overflow-hidden fade-in-up"
         :style="{ animationDelay: `${(index % 10) * 80 + 150}ms` }"
       >
-        <!-- Media Container -->
-        <div v-if="demo.media" class="relative rounded-2xl p-[2px] bg-gradient-to-br from-transparent to-transparent group-hover:from-purple-500/40 group-hover:to-blue-500/40 transition-all duration-700">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-700 pointer-events-none rounded-2xl"></div>
-          <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-[#1a1a1a] shadow-sm border border-gray-200/50 dark:border-gray-800/50 group-hover:border-transparent transition-colors duration-500">
-            <a :href="demo.link || demo.github || '#'" target="_blank" class="block cursor-pointer relative z-10 w-full bg-white dark:bg-[#111]">
-              <template v-if="demo.media.type === 'video'">
-                <video 
-                  :src="withBase(demo.media.url)" 
-                  autoplay 
-                  loop 
-                  muted 
-                  playsinline
-                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                ></video>
-              </template>
-              <template v-else>
-                <img 
-                  :src="withBase(demo.media.url)" 
-                  :alt="demo.project || 'Demo'" 
-                  class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-              </template>
-              <!-- Glass Overlay -->
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 dark:group-hover:bg-white/5 transition-colors duration-500"></div>
-            </a>
-          </div>
+        <!-- Media Container (Full Bleed Top) -->
+        <div v-if="demo.media" class="relative w-full aspect-video bg-gray-100 dark:bg-[#1a1a1a] overflow-hidden border-b border-gray-100 dark:border-gray-800">
+          <a :href="demo.link || demo.github || '#'" target="_blank" class="block cursor-pointer w-full h-full">
+            <template v-if="demo.media.type === 'video'">
+              <video 
+                :src="withBase(demo.media.url)" 
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              ></video>
+            </template>
+            <template v-else>
+              <img 
+                :src="withBase(demo.media.url)" 
+                :alt="demo.project || 'Demo'" 
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </template>
+            <!-- Overlay for click area feedback -->
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors duration-300"></div>
+          </a>
         </div>
 
-        <!-- Content -->
-        <div class="flex flex-col gap-2 px-2">
-          <p class="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300 transition-colors duration-300 group-hover:text-gray-900 dark:group-hover:text-gray-100" v-html="renderContent(demo.content)"></p>
+        <!-- Content Area -->
+        <div class="flex flex-col flex-grow p-6">
+          <p class="text-[15px] leading-relaxed text-gray-600 dark:text-gray-300 transition-colors duration-300 flex-grow" v-html="renderContent(demo.content)"></p>
           
-          <div class="flex flex-wrap items-center justify-between mt-2 gap-y-2 gap-x-4">
-            <div class="flex flex-wrap items-center gap-3">
-              <a v-if="demo.project" :href="demo.link || demo.github" target="_blank" class="text-sm font-medium opacity-60 hover:opacity-100 hover:text-blue-500 dark:hover:text-blue-400 transition-all flex items-center gap-1 group/link">
-                <span class="i-carbon-cube text-lg transform group-hover/link:rotate-12 transition-transform"></span>
-                {{ demo.project }}
+          <!-- Divider -->
+          <div class="h-px bg-gray-100 dark:bg-gray-800/80 my-5"></div>
+          
+          <!-- Actions & Meta -->
+          <div class="flex flex-wrap items-center justify-between gap-y-2 gap-x-4 mt-auto">
+            <div class="flex flex-wrap items-center gap-4">
+              <a v-if="demo.link" :href="demo.link" target="_blank" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center gap-1.5 uppercase tracking-wide">
+                <span class="i-carbon-launch text-lg"></span> VISIT
               </a>
-              <a v-if="demo.github" :href="demo.github" target="_blank" class="text-sm font-medium opacity-60 hover:opacity-100 hover:text-purple-500 dark:hover:text-purple-400 transition-all flex items-center gap-1 group/link">
-                <span class="i-carbon-logo-github text-lg transform group-hover/link:scale-110 transition-transform"></span>
-                Source
+              <a v-if="demo.github" :href="demo.github" target="_blank" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex items-center gap-1.5 uppercase tracking-wide">
+                <span class="i-carbon-logo-github text-lg"></span> SOURCE
               </a>
             </div>
             <span class="text-xs text-gray-400 dark:text-gray-500 font-mono shrink-0">{{ demo.date }}</span>
@@ -87,6 +86,17 @@ interface DemoItem {
 }
 
 const demos = ref<DemoItem[]>([
+  {
+    id: 'bilibili-crawler',
+    project: 'bilibili-crawler',
+    content: '📺 <b>bilibili-crawler</b> 是一个强大的 Bilibili 数据抓取工具。<br/>提供高效的视频数据、弹幕及评论提取能力，支持自定义配置与内容分析。',
+    date: '2026-05-08',
+    github: 'https://github.com/shindouhiro/bilibili-crawler',
+    media: {
+      type: 'image',
+      url: '/images/demos/bilibili_crawler_cover.png'
+    }
+  },
   {
     id: 'skills-cli',
     project: 'skills-cli',
