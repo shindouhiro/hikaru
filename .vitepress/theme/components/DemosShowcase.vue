@@ -60,7 +60,7 @@
                 <span class="i-carbon-logo-github text-lg"></span> SOURCE
               </a>
             </div>
-            <div class="flex flex-wrap gap-2 shrink-0">
+            <div class="flex flex-wrap gap-2">
               <span v-for="tag in demo.tags" :key="tag.name" class="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-gray-700 bg-white dark:text-gray-300 dark:bg-[#252525] rounded-md border border-gray-200 dark:border-gray-700/80 shadow-sm transition-colors hover:bg-gray-50 dark:hover:bg-[#2a2a2a]">
                 <span :class="tag.icon" class="text-[13px] shrink-0"></span>
                 {{ tag.name }}
@@ -97,6 +97,36 @@ interface DemoItem {
 
 const demos = ref<DemoItem[]>([
   {
+    id: 'tower',
+    project: 'Tower',
+    content: '🏰 <b>Tower</b> 是一款全自动的 H5 放置类 RPG 游戏。<br/>英雄在动态场景中穿梭并与不断变强的怪物战斗，为你带来畅快的“放置与升级”体验。',
+    tags: [
+      { name: 'Vue', icon: 'i-logos-vue' },
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' },
+      { name: 'HTML5', icon: 'i-logos-html-5' }
+    ],
+    github: 'https://github.com/shindouhiro/Tower',
+    media: {
+      type: 'image',
+      url: 'https://i0.hdslb.com/bfs/openplatform/3f8838f6b37dd944ada5bbe056cfc0fd5d2a1965.png'
+    }
+  },
+  {
+    id: 'tarot-card',
+    project: 'Tarot Card',
+    content: '🔮 <b>Tarot Card</b> 是一款沉浸式的塔罗牌占卜应用。<br/>提供精美的卡牌翻转动画与多维度的牌意解析（感情、事业、建议），带你在交互式体验中探索塔罗的奥秘。',
+    tags: [
+      { name: 'Vue', icon: 'i-logos-vue' },
+      { name: 'TypeScript', icon: 'i-logos-typescript-icon' },
+      { name: 'TailwindCSS', icon: 'i-logos-tailwindcss-icon' }
+    ],
+    github: 'https://github.com/shindouhiro/tarot_card',
+    media: {
+      type: 'image',
+      url: 'https://i0.hdslb.com/bfs/openplatform/756f44549e1982d5b67f2f2030d3560b701b6ac2.png'
+    }
+  },
+  {
     id: 'svg-tools',
     project: 'svg-tools',
     content: '🎨 <b>svg-tools</b> 是一个实用的 SVG 处理与转换工具集。<br/>帮助开发者快速清理、压缩和管理项目中的 SVG 图标资源，大幅提升前端开发效率。',
@@ -119,8 +149,7 @@ const demos = ref<DemoItem[]>([
     tags: [
       { name: 'React', icon: 'i-logos-react' },
       { name: 'Tauri', icon: 'i-logos-tauri' },
-      { name: 'Python', icon: 'i-logos-python' },
-      { name: 'FastAPI', icon: 'i-logos-fastapi-icon' },
+      { name: 'Rust', icon: 'i-logos-rust' },
       { name: 'TailwindCSS', icon: 'i-logos-tailwindcss-icon' }
     ],
     github: 'https://github.com/shindouhiro/bilibili-crawler',
